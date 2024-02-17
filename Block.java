@@ -2,12 +2,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Block{
+    private int blockHash;
     private DataType type;
     private String data;
     private Map<String, Boolean> grants;
 
     // constructors
-    Block(String data){
+    Block(int id, String data){
+        this.blockHash = id;
         this.data = data;
 
         // it normalizes the data, by filling filling it with empty spaces till it maximizes the capacity of a Level
@@ -22,7 +24,8 @@ public class Block{
         grants.put("read-write", false);
     }
     
-    Block(String data, Map<String, Boolean> grants){
+    Block(int id, String data, Map<String, Boolean> grants){
+        this.blockHash = id;
         this.data = data;
 
         // it normalizes the data, by filling filling it with empty spaces till it maximizes the capacity of a Level
@@ -71,6 +74,7 @@ public class Block{
     }
     public void displayBlock(){
         System.out.println("\n================================================");
+        System.out.println(" Hash : " + this.blockHash);
         System.out.println(" Data : " + this.data);
         System.out.println(" Level type : " + this.type.toString());
         System.out.println(" Grants : ");
